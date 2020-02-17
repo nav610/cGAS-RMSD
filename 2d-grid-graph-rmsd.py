@@ -6,7 +6,7 @@ import matplotlib.ticker as ticker
 
 parser=argparse.ArgumentParser()
 parser.add_argument("-grid","--grid",help="grid file to graph")
-parser.add_argument("-title","--title",help="title of plot")
+parser.add_argument("-name","--name",help="name")
 args=parser.parse_args()
 
 def convert_CV2(value):
@@ -53,7 +53,8 @@ for ind,label in enumerate(graph.get_xticklabels()):
         label.set_visible(True)
     else: label.set_visible(False)
 
-graph.set_xlim(0,500)
-graph.set_ylim(0,500)
-graph.set(ylabel='phi [rad]',xlabel='d [mE-11]')
-plt.show()
+graph.set_xlim(0,200)
+graph.set_ylim(0,200)
+graph.set(ylabel='RMSD (b-sheets)',xlabel='RMSD (activation loop)')
+plt.savefig(args.name+".png")
+
